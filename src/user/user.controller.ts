@@ -1,14 +1,9 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 
 @Controller('users')
 export class UserController {
-  @Get()
-  getUser(): string {
-    return 'User data';
-  }
-
   @Post()
-  createUser(): string {
-    return 'User created';
+  createUser(@Body() body: Record<string, any>) {
+    return { body };
   }
 }
