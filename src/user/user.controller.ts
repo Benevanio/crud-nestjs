@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
   Put,
@@ -14,8 +15,8 @@ import { UpdarePutUserDto } from './dto/update-put-user.dto';
 @Controller('users')
 export class UserController {
   @Post()
-  createUser(@Body() body: CreateUserDto) {
-    return { body };
+  createUser(@Body() { name, email, password }: CreateUserDto) {
+    return { name, email, password };
   }
   @Get()
   getUser(@Body() body: Record<string, any>) {
@@ -26,16 +27,19 @@ export class UserController {
     return { id };
   }
   @Put(':id')
-  updateUser(@Param(':id') id: string, @Body() body: UpdarePutUserDto) {
-    return { body };
+  updateUser(
+    @Param(':id') id: string,
+    @Body() { name, email, password }: UpdarePutUserDto,
+  ) {
+    return { id, name, email, password };
   }
-
   @Patch(':id')
   updateUserById(@Param(':id') id: string, @Body() body: Record<string, any>) {
     return { id, body };
   }
   @Delete(':id')
-  deleteUser(@Param(':id') id: string) {
+  deteletUser(@Param(':id', ParseIntPipe) id: string) {
     return { id };
   }
+ 
 }

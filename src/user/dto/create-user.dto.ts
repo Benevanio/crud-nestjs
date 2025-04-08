@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import {
-    IsEmail,
-    IsNotEmpty,
-    IsString,
-    Matches,
-    MinLength,
+  IsEmail,
+  IsNotEmpty,
+  IsString,
+  Matches,
+  MinLength,
 } from 'class-validator';
 
 export class CreateUserDto {
